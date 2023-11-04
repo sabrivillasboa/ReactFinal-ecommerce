@@ -1,14 +1,13 @@
 import React from "react";
+import { Box, Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import Box from "@mui/material/Box";
 
 const CartWidget = () => {
   return (
-    <Box sx={{ display: "flex" }}>
-      <Box sx={{ typography: "body1", alignSelf: "center", color: "white" }}>
-        0
-      </Box>
-      <ShoppingCartIcon sx={{ margin: 1.6, fontSize: 30, color: "white" }} />
+    <Box >
+      <Badge badgeContent={2} sx={{color:"white"}}>
+        <ShoppingCartIcon sx={{color:"white", fontSize:"2rem"}} /> 
+      </Badge>
     </Box>
   );
 };

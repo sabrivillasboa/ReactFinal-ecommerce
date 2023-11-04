@@ -5,7 +5,7 @@ import { dataBooks } from "../dataBooks";
 import ItemList from "../../components/ItemList/ItemList";
 import { useParams } from "react-router-dom";
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const { categoryId } = useParams();
 
@@ -16,12 +16,13 @@ const ItemListContainer = (props) => {
       } else {
         setProducts(result);
       }
-    });
-    console.log(products);
+    })
+    .catch((error) => console.log(error));
   }, [categoryId]);
 
   return (
     <Stack>
+      <h1>Hola</h1>
       <ItemList products={products} />
     </Stack>
   );

@@ -20,9 +20,17 @@ const ItemDetailContainer = () => {
       .catch((error) => console.log(error));
   }, [id]);
 
+  const addCart = (cantidad) => {
+    let book={
+      ...item,
+      quantity:cantidad,
+    };
+    console.log("este es el prod que se agrega", book);
+  }; 
+
   return (
     <div style={{display:"flex", height:"90vh", alignItems:"center"}}>
-      <ItemDetail item={item}/>
+      <ItemDetail item={item} addCart={addCart} />
     </div>
   );
 };

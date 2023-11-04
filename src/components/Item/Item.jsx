@@ -6,8 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const Item = (props) => {
-  const { product } = props;
+const Item = ({ product }) => {
 
   return (
     <Card sx={{ width: 300, m: 2 }}>

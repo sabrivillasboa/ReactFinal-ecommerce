@@ -1,7 +1,7 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography, Button } from "@mui/material";
+import QuantitySelectorContainer from "../quantitySelector/QuantitySelectorContainer";
 
-const ItemDetail = (props) => {
-    const { item } = props;
+const ItemDetail = ({ item, addCart}) => {
   return (
     <Container
       sx={{
@@ -50,6 +50,7 @@ const ItemDetail = (props) => {
             <Typography variant="body1" color="text.primary">
               Precio: ${item.price}
             </Typography>
+            <QuantitySelectorContainer stock={item.stock} addCart={addCart} />
           </Box>
         </Grid>
       </Grid>
