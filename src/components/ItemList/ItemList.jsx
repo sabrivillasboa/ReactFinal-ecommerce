@@ -8,8 +8,8 @@ const ItemList = ({products}) => {
     <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly"}}>
       {
         products.map( product => 
-          <Link to= {`/item/${product.id}`}>
-            <Item product={product} key={product.id} />
+          <Link to= {`/item/${product.id}`} key={product.id}>
+            <Item product={product} />
           </Link>
         )
       }

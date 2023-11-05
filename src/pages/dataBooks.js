@@ -6,7 +6,7 @@ export const dataBooks = [
         category: "literatura",
         description: "Cuenta la historia de dos jóvenes que, a pesar de la oposición de sus familiares, rivales entre sí, deciden casarse de forma ilegal y vivir juntos; sin embargo, la presión de esa rivalidad y una serie de fatalidades conducen a que la pareja elija el suicidio antes que vivir separados.",
         image: "https://http2.mlstatic.com/D_NQ_NP_648243-MLU71296225513_082023-O.webp",
-        stock: "10",
+        stock: "4",
         price: "4300",
     },
     {
@@ -16,7 +16,7 @@ export const dataBooks = [
         category: "romance",
         description: "En un hogar de retiro un hombre le lee a una mujer, que sufre de Alzheimer, la historia de dos jóvenes de distintas clases sociales que se enamoraron durante la convulsionada década del 40, y de cómo fueron separados por terceros, y por la guerra.",
         image: "https://http2.mlstatic.com/D_NQ_NP_716455-MLA50890277421_072022-O.webp",
-        stock: "10",
+        stock: "3",
         price: "11299",
     },
     {

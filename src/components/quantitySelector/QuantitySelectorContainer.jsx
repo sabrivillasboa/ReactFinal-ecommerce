@@ -1,8 +1,8 @@
 import { useState } from "react";
 import QuantitySelector from "./quantitySelector";
 
-const QuantitySelectorContainer = ( {stock, addCart} ) => {
-    const [contador, setContador] =useState(1);
+const QuantitySelectorContainer = ( {stock, addCart, initial=1} ) => {
+    const [contador, setContador] =useState(initial);
 
 const sumar =() =>{
     if (contador < stock) {

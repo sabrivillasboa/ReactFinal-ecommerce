@@ -14,11 +14,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CartWidget from "../CartWidget/CartWidget";
-
-import { deepOrange } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 
-const primary = deepOrange[400]; // #ff7043
+
 
 const drawerWidth = 240;
 

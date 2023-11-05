@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Typography, Button } from "@mui/material";
 import QuantitySelectorContainer from "../quantitySelector/QuantitySelectorContainer";
 
-const ItemDetail = ({ item, addCart}) => {
+const ItemDetail = ({ item, addCart, initial }) => {
   return (
     <Container
       sx={{
@@ -50,7 +50,7 @@ const ItemDetail = ({ item, addCart}) => {
             <Typography variant="body1" color="text.primary">
               Precio: ${item.price}
             </Typography>
-            <QuantitySelectorContainer stock={item.stock} addCart={addCart} />
+            <QuantitySelectorContainer stock={item.stock} addCart={addCart} initial={initial} />
           </Box>
         </Grid>
       </Grid>
