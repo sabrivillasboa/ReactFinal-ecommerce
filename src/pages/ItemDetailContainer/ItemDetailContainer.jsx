@@ -4,6 +4,7 @@ import { asyncMock } from "../../asyncMock";
 import { dataBooks } from "../dataBooks";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import { CartContext } from "../../context/CartContext";
+import Swal from 'sweetalert2'
 
 
 const ItemDetailContainer = () => {
@@ -33,6 +34,14 @@ const ItemDetailContainer = () => {
     };
     
     addInCart(book)
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Proucto agregado al carrito",
+      showConfirmButton: false,
+      timer: 1500
+    });
 
   }; 
 
