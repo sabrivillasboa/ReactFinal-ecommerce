@@ -15,6 +15,8 @@ const Cart = () => {
       title: "Eliminar carrito?",
       showDenyButton: true,
       confirmButtonText: "Si, eliminar.",
+      confirmButtonColor: "#ff7043",
+      focusConfirm: false,
       denyButtonText: `No`
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
