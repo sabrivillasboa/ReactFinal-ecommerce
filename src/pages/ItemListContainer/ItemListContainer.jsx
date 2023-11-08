@@ -1,24 +1,34 @@
 import { useState, useEffect } from "react";
-import { Stack, Box ,CircularProgress } from "@mui/material";
-import { asyncMock } from "../../asyncMock";
-import { dataBooks } from "../dataBooks";
+import { Stack, Box ,CircularProgress, Button } from "@mui/material";
 import ItemList from "../../components/ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import { getDocs, collection, query, where, addDoc } from "firebase/firestore";
+import { database } from "../../firebaseConfig";
+
+
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const { categoryId } = useParams();
 
   useEffect(() => {
-    asyncMock(dataBooks)
-      .then((result) => {
-        if (categoryId) {
-          setProducts(result.filter((prod) => prod.category == categoryId));
-        } else {
-          setProducts(result);
-        }
+    let dataCollection = collection(database, "dataBooks")
+    
+    let filtered;
+
+    if (!categoryId) {
+      filtered = dataCollection
+    } else {
+      filtered = query (dataCollection, where ("category", "==" , categoryId))
+    }
+
+    getDocs (filtered).then ( res => {
+      let collectionFiltered = res.docs.map( product =>{
+        return {...product.data(), id: product.id}
       })
-      .catch((error) => console.log(error));
+      setProducts(collectionFiltered)
+    })
+
   }, [categoryId]);
 
   return (

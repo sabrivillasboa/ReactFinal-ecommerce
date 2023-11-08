@@ -1,5 +1,6 @@
 import { useState } from "react";
 import QuantitySelector from "./quantitySelector";
+import Swal from "sweetalert2";
 
 const QuantitySelectorContainer = ( {stock, addCart, initial=0} ) => {
     const [contador, setContador] =useState(initial);
@@ -8,7 +9,7 @@ const sumar =() =>{
     if (contador < stock) {
         setContador (contador + 1);
     }else {
-        alert ("sin stock");
+        Swal.fire("¡No hay mas stock!");
     };
 };
 

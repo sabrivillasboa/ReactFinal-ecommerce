@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { asyncMock } from "../../asyncMock";
-import { dataBooks } from "../dataBooks";
+
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import { CartContext } from "../../context/CartContext";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { database } from "../../firebaseConfig"; 
+import { getDoc, collection, doc } from "firebase/firestore";
 
 
 const ItemDetailContainer = () => {
@@ -14,17 +15,19 @@ const ItemDetailContainer = () => {
 
   const {addInCart, getQuantityById } = useContext(CartContext);
 
-  let totalQuantity = getQuantityById(+id)
-  console.log(totalQuantity)
+  let totalQuantity = getQuantityById(id)
 
   useEffect(() => {
-    asyncMock(dataBooks)
-      .then((result) => {
-        const filteredElement = result.find((prod) => prod.id == id);
-        setItem(filteredElement);
-        console.log(item);
-      })
-      .catch((error) => console.log(error));
+    
+    let dataCollection = collection(database, "dataBooks")
+
+    let documento = doc( dataCollection, id)
+
+    getDoc(documento).then( res =>{
+      setItem( {id:res.id, ...res.data()} )
+    })
+
+
   }, [id]);
 
   const addCart = (cantidad) => {
@@ -38,9 +41,9 @@ const ItemDetailContainer = () => {
     Swal.fire({
       position: "center",
       icon: "success",
-      title: "Proucto agregado al carrito",
+      title: "Producto agregado al carrito",
       showConfirmButton: false,
-      timer: 1500
+      timer: 1000
     });
 
   }; 

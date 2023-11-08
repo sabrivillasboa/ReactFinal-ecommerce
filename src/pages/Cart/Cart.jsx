@@ -19,7 +19,6 @@ const Cart = () => {
       focusConfirm: false,
       denyButtonText: `No`
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         deleteCart()
         Swal.fire("Carrito eliminado!", "", "success");
@@ -63,3 +62,12 @@ const Cart = () => {
 }
 
 export default Cart;
+
+{/* <Grid container spacing={2} columns={16}>
+  <Grid item xs={8}>
+    <Item>xs=8</Item>
+  </Grid>
+  <Grid item xs={8}>
+    <Item>xs=8</Item>
+  </Grid>
+</Grid> */}
