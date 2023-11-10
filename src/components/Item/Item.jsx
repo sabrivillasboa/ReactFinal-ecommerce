@@ -9,7 +9,7 @@ import {
 const Item = ({ product }) => {
 
   return (
-    <Card sx={{ width: 300, m: 2 }}>
+    <Card sx={{ width: 300, m: 2, color:"#2E475D"}}>
       <CardActionArea>
         <CardMedia
           sx={{ objectFit: "contain" }}
