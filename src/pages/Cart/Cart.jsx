@@ -21,7 +21,7 @@ const Cart = () => {
       title: "Eliminar carrito?",
       showDenyButton: true,
       confirmButtonText: "Si, eliminar.",
-      confirmButtonColor: "##4e50a0",
+      confirmButtonColor: "#4e50a0",
       focusConfirm: false,
       denyButtonText: `No`,
     }).then((result) => {
@@ -35,46 +35,28 @@ const Cart = () => {
   };
 
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}
+    >
+      <Typography
+        variant="h5"
+        sx={{ alignSelf: "center", margin: "2rem", color: "#2E475D" }}
+      >
+        Tu carrito
+      </Typography>
       {cart.map((item) => (
-        <Box key={item.id} sx={{display:"flex", justifyContent:"space-around", p:"1rem"}}>
-          <img
-                component="img"
-                height="100"
-                width="auto"
-                src={item.image}
-                alt={item.name}
-              ></img>
-          <Typography variant="h6">{item.name}</Typography>
-          <Typography variant="h6">${item.price}</Typography>
-          <Typography variant="body1">Cantidad: {item.quantity}</Typography>
-          <Button onClick={() => deleteBook(item.id)}>Eliminar</Button>
-        </Box>
-      ))}
-      {cart.length > 0 ? (
-        <Box>
-          <h3>Total compra: ${total} </h3>
-          <Link to="/checkout">
-            <Button variant="contained" sx={{ color: "white" }}>
-              Finalizar compra
-            </Button>
-          </Link>
-          <Button variant="contained" onClick={deleteCartSwal}>
-            Vaciar carrito
-          </Button>
-        </Box>
-      ) : (
-        <Container
-          sx={{
-            color: "#2E475D",
-            height: "90vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+        <Box
+          key={item.id}
+          sx={{ display: "flex", justifyContent: "space-around" }}
         >
           <Grid
             container
+            maxWidth="md"
+            spacing={1}
             sx={{
               display: "flex",
               alignItems: "center",
@@ -84,41 +66,115 @@ const Cart = () => {
             <Grid
               item
               xs={12}
-              md={12}
-              lg={12}
+              md={6}
+              lg={6}
               sx={{
                 display: "flex",
-                justifyContent: "center",
-                textAlign: "center",
+                alignItems: "center",
+                justifyContent: "space-around",
+                p: "1rem 2rem",
+                color: "#2E475D",
               }}
             >
-              <Typography variant="h4">Empieza a llenar tu carrito!</Typography>
-            </Grid>
-            <Grid item>
-              <CardMedia
+              <img
                 component="img"
-                height="200"
-                image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXP5mBuzsKkREcgEcEqeX7Epj0JlA7D-ipWayVt0Aw9ZHG9RBsLmGolJfnyHZ5Da06L-Q&usqp=CAU"
-                alt="cart"
-              ></CardMedia>
+                height="80"
+                width="auto"
+                src={item.image}
+                alt={item.name}
+              ></img>
+              <Typography variant="body1">{item.name}</Typography>
+              <Typography variant="body1">${item.price}</Typography>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              lg={6}
+              sx={{
+                display: "flex",
+                justifyContent: "start",
+                textAlign: "center",
+                p: "1rem",
+              }}
+            >
+              <Typography
+                sx={{ display: "flex", alignSelf: "center", p: "0 1rem" }}
+                variant="body1"
+              >
+                Cantidad: {item.quantity}
+              </Typography>
+              <Button variant="text" onClick={() => deleteBook(item.id)}>
+                Eliminar
+              </Button>
             </Grid>
           </Grid>
-        </Container>
+        </Box>
+      ))}
+      {cart.length > 0 ? (
+        <Grid
+          container
+          maxWidth="md"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "start",
+            alignSelf: "center",
+            color: "#2E475D",
+          }}
+        >
+          <Grid item sx={{ m: "1rem" }}>
+            <Box>
+              <Typography variant="h6" sx={{ p: "0.5rem 0" }}>
+                Total compra: ${total}{" "}
+              </Typography>
+              <Link to="/checkout">
+                <Button variant="contained" sx={{ color: "white", mr: "1rem" }}>
+                  Finalizar compra
+                </Button>
+              </Link>
+              <Button variant="outlined" onClick={deleteCartSwal}>
+                Vaciar carrito
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
+      ) : (
+        <Grid
+          container
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#2E475D",
+            height: "60vh",
+          }}
+        >
+          <Grid
+            item
+            xs={12}
+            md={12}
+            lg={12}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+          >
+            <Typography variant="h4">Empieza a llenar tu carrito!</Typography>
+          </Grid>
+          <Grid item>
+            <CardMedia
+              component="img"
+              height="200"
+              image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXP5mBuzsKkREcgEcEqeX7Epj0JlA7D-ipWayVt0Aw9ZHG9RBsLmGolJfnyHZ5Da06L-Q&usqp=CAU"
+              alt="cart"
+            ></CardMedia>
+          </Grid>
+        </Grid>
       )}
-    </>
-
+    </div>
   );
 };
 
 export default Cart;
-
-{
-  /* <Grid container spacing={2} columns={16}>
-  <Grid item xs={8}>
-    <Item>xs=8</Item>
-  </Grid>
-  <Grid item xs={8}>
-    <Item>xs=8</Item>
-  </Grid>
-</Grid> */
-}
