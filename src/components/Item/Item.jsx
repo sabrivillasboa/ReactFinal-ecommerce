@@ -7,24 +7,21 @@ import {
 } from "@mui/material";
 
 const Item = ({ product }) => {
-
   return (
-    <Card sx={{ width: 300, m: 2, color:"#2E475D"}}>
+    <Card sx={{ width: 250, m: 2, color: "#2E475D" }}>
       <CardActionArea>
         <CardMedia
           sx={{ objectFit: "contain" }}
           component="img"
-          height="300"
+          height="200"
           image={product.image}
           alt={product.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
+          <Typography gutterBottom variant="body1" component="div">
             {product.name}
           </Typography>
-          <Typography variant="body1" color="text.primary">
-            Precio: ${product.price}
-          </Typography>
+          <Typography variant="body1">Precio: ${product.price}</Typography>
         </CardContent>
       </CardActionArea>
     </Card>

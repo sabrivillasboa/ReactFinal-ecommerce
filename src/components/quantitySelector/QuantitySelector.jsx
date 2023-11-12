@@ -1,17 +1,21 @@
 import React from "react";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 const QuantitySelector = ({ sumar, contador, restar, addCart }) => {
   return (
-    <div style={{ display: "flex", gap: "30px" }}>
-      <Button variant="outlined" onClick={sumar}>
+    <div style={{ display: "flex" }}>
+      <Button variant="text" onClick={sumar}>
         +
       </Button>
-      <h5> {contador} </h5>
-      <Button variant="outlined" onClick={restar}>
+      <Typography variant="body1" sx={{ alignSelf: "center" }}>
+        {contador}
+      </Typography>
+      <Button variant="text" onClick={restar}>
         -
       </Button>
-      <Button variant="outlined" onClick={ ()=> addCart(contador)}>Agregar al carrito</Button>
+      <Button variant="contained" onClick={() => addCart(contador)}>
+        Agregar al carrito
+      </Button>
     </div>
   );
 };

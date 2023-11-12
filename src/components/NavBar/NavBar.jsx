@@ -16,8 +16,6 @@ import Button from "@mui/material/Button";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
 
-
-
 const drawerWidth = 240;
 
 const NavBar = (props) => {
@@ -72,7 +70,7 @@ const NavBar = (props) => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" position="sticky">
+      <AppBar component="nav" position="fixed">
         <Toolbar>
           <IconButton
             color="inherit"

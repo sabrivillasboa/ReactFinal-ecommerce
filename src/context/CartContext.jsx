@@ -1,9 +1,12 @@
 import { createContext, useState } from "react";
+import Swal from "sweetalert2";
 
 export const CartContext = createContext();
 
 const CartContextComponent = ({ children }) => {
-  const [cart, setCart] = useState( JSON.parse(localStorage.getItem("cart")) || [] );
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
 
   const addInCart = (product) => {
     let exist = isInCart(product.id);
@@ -42,6 +45,7 @@ const CartContextComponent = ({ children }) => {
     let arrayFiltered = cart.filter((product) => product.id !== id);
     setCart(arrayFiltered);
     localStorage.setItem("cart", JSON.stringify(arrayFiltered));
+    Swal.fire("Producto eliminado.");
   };
 
   const totalPrice = () => {

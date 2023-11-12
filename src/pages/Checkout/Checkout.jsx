@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TextField, Box, Button } from "@mui/material";
+import { TextField, Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
 import { serverTimestamp, updateDoc } from "firebase/firestore";
 import { CartContext } from "../../context/CartContext";
@@ -12,7 +12,6 @@ const Checkout = () => {
     surname: "",
     phone: "",
     email: "",
-    //repeatEmail:"",
   });
 
   const [orderId, setOrderId] = useState(null);
@@ -36,30 +35,71 @@ const Checkout = () => {
     let ordersCollections = collection(database, "orders");
     addDoc(ordersCollections, order).then((res) => setOrderId(res.id));
 
-    cart.forEach(element => {
-        let refDoc = doc (database, "dataBooks", element.id)
-        updateDoc(refDoc, {stock: element.stock - element.quantity,})
+    cart.forEach((element) => {
+      let refDoc = doc(database, "dataBooks", element.id);
+      updateDoc(refDoc, { stock: element.stock - element.quantity });
     });
 
     deleteCart();
   };
 
   return (
-    <>
+    <div style={{ backgroundColor: "#f5f5fa", minHeight: "100vh" }}>
       {orderId ? (
-        <h2>Compra finalizada. Su nro de comprobante es {orderId}</h2>
-      ) : (
-        <div
-          style={{ display: "flex", height: "90vh", flexDirection: "column" }}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "70vh",
+          }}
         >
-          <h2>Checkout</h2>
-          <Box component="form" onSubmit={handleSubmit}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              maxWidth: "450px",
+              color: "#2E475D",
+            }}
+          >
+            <Typography variant="h5">
+              Compra finalizada!!
+              <br /> Su nro de comprobante es {orderId}
+            </Typography>
+          </Box>
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            minHeight: "100vh",
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{
+              alignSelf: "center",
+              margin: "7rem 0 4rem",
+              color: "#2E475D",
+            }}
+          >
+            Finaliza tu compra
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{ maxWidth: "350px" }}
+          >
             <TextField
               label="nombre"
               type="text"
               onChange={handleChange}
               variant="outlined"
               name="name"
+              margin="normal"
+              fullWidth
             />
             <TextField
               label="apellido"
@@ -67,6 +107,8 @@ const Checkout = () => {
               onChange={handleChange}
               variant="outlined"
               name="surname"
+              margin="normal"
+              fullWidth
             />
             <TextField
               label="telefono"
@@ -74,6 +116,8 @@ const Checkout = () => {
               onChange={handleChange}
               variant="outlined"
               name="phone"
+              margin="normal"
+              fullWidth
             />
             <TextField
               label="email"
@@ -81,14 +125,21 @@ const Checkout = () => {
               onChange={handleChange}
               variant="outlined"
               name="email"
+              margin="normal"
+              fullWidth
             />
-            <Button variant="contained" type="submit">
+            <Button
+              variant="contained"
+              type="submit"
+              fullWidth
+              sx={{ margin: "0.6rem 0" }}
+            >
               Enviar
             </Button>
           </Box>
-        </div>
+        </Box>
       )}
-    </>
+    </div>
   );
 };
 
