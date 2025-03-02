@@ -1,5 +1,4 @@
 import React from "react";
-//import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -29,7 +28,7 @@ const NavBar = (props) => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MYBOOK
+        EBooK
       </Typography>
       <Divider />
       <List>
@@ -86,7 +85,12 @@ const NavBar = (props) => {
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
             <Link to={`/`}>
-              <img src="/src/components/NavBar/MYBOOK-white.png" alt="Logo" />
+              <Typography
+                variant="h4"
+                sx={{ ml: 6, fontSize: "2rem", fontWeight: "500" }}
+                color={"white"}>
+                EBooK
+              </Typography>
             </Link>
           </Typography>
           <CartWidget />
